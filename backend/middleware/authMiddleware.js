@@ -24,4 +24,4 @@ const protect = async (req, res, next) => {
     }
 };
 
-module.exports = { protect }; // Ensure you are exporting a function or functions, not an object
+module.exports = { protect };

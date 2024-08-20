@@ -1,6 +1,6 @@
 const express = require('express');
 const { createOrder, getOrders, getOrderById, updateOrder, deleteOrder } = require('../controllers/orderController');
-const { protect } = require('../middleware/authMiddleware'); // Ensure protect middleware is correctly defined
+const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
 router.post('/', protect, createOrder);          // Create a new order
