@@ -17,7 +17,7 @@ exports.registerUser = async (req, res) => {
     }
 };
 
-// Login user and return JWT token
+// Login an existing user
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
