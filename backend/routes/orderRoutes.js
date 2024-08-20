@@ -1,25 +1,12 @@
 const express = require('express');
-const {
-    createOrder,
-    getOrderById,
-    updateOrderToPaid,
-    getMyOrders,
-    getOrders,
-} = require('../controllers/orderController');
-const { protect, admin } = require('../middleware/authMiddleware');
+const { createOrder, getOrders, getOrderById, updateOrder, deleteOrder } = require('../controllers/orderController');
+const { protect } = require('../middleware/authMiddleware'); // Ensure protect middleware is correctly defined
 const router = express.Router();
 
-router.route('/')
-    .post(protect, createOrder)
-    .get(protect, admin, getOrders); // Admin route
-
-router.route('/myorders')
-    .get(protect, getMyOrders);
-
-router.route('/:id')
-    .get(protect, getOrderById);
-
-router.route('/:id/pay')
-    .put(protect, updateOrderToPaid);
+router.post('/', protect, createOrder);          // Create a new order
+router.get('/', protect, getOrders);             // Get all orders for a user
+router.get('/:id', protect, getOrderById);       // Get a single order by ID
+router.put('/:id', protect, updateOrder);        // Update an order
+router.delete('/:id', protect, deleteOrder);     // Delete an order
 
 module.exports = router;
